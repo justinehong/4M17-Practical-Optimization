@@ -58,6 +58,48 @@ class TabuSearch:
         list of objective function values at each iteration
     best_fs : list
         list of best objective function values at each iteration
+        
+    Methods
+    -------
+    set_x0(x0):
+        Set initial solution x0.
+    
+    set_seed(seed):
+        Set seed for random number generator.
+
+    reset(x0):
+        Set all variables to initial values given initial x0.
+
+    check_convergence():
+        Check if step size is below threshold for convergence.
+
+    local_search(base):
+        Perform a local search iteration.
+
+    update_STM(base):
+        Update the STM.
+    
+    update_MTM(base, f_base):
+        Update the MTM.
+
+    update_LTM(base):
+        Update the LTM.
+
+    update_counter(fval, verbose=False):
+        Update the counter controlling search intensification,
+        search diversification and step size reduction.
+    
+    search_intensify():
+        Perform search intensification.
+
+    search_diversify():
+        Perform search diversification.
+
+    reduce_step():
+        Perform step size reduction.
+
+    run(n_iters, verbose=False):
+        Run the Tabu Search algorithm.
     """
 
     def __init__(self, f, x0, seed=1, intensify=10, diversify=15, reduce=25,
