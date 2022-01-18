@@ -64,6 +64,29 @@ class SimulatedAnnealing:
         best solution
     best_counter : int
         counter for iterations since new best found
+        
+    Methods
+    -------
+    set_x0(x0):
+        Set initial solution x0.
+    
+    set_seed(seed):
+        Set seed for random number generator.
+
+    reset(x0):
+        Set all variables to initial values given initial x0.
+
+    initialise_temp():
+        Initialise temperature using method defined by self.PROPOSAL.
+
+    cool(sigma_k):
+        Reduce temperature using annealing method.
+
+    check_restart(f):
+        Check if condition for restart has been met. 
+
+    run(n_iters, verbose=False):
+        Run the Simulated Annealing algorithm.
     """
 
     def __init__(self, f, x0, seed=1, xlim=(-512,512), initial_step=20,
@@ -370,7 +393,7 @@ class SimulatedAnnealing:
         return (self.best_x, self.best_fs[-1], self.x_history, self.f_history, self.best_fs)
 
 
-def evaluate_performance(sa, dim, nruns=25, numiters=1000):
+def evaluate_performance_sa(sa, dim, nruns=25, numiters=1000):
     """
     Get performance metrics for Simulated Annealing with given model parameters.
 
